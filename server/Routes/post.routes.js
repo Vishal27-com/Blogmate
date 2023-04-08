@@ -1,4 +1,5 @@
-const express=require("express")
+const express=require("express");
+const { createPost, getPost, updatePost, deletePost, likePost, unlikePost } = require("../Controller/post.controller");
 const postRouter=express.Router();
 
 // Create a new post. The request should include the user_id.

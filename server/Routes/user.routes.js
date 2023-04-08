@@ -1,4 +1,5 @@
-const express=require("express")
+const express=require("express");
+const { createUser, getUser, updateUser, deleteUser } = require("../Controller/user.controller");
 const userRouter=express.Router();
 
 // to create a new user.

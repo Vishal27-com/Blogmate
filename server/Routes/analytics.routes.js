@@ -1,4 +1,5 @@
-const express=require("express")
+const express=require("express");
+const { getTotalNumberOfUser, getMostActiveUsers, getTotalNumberOfPost, getMostLikedPosts } = require("../Controller/analytics.controller");
 const analyticsRouter=express.Router();
 
 // to retrieve the total number of users.
