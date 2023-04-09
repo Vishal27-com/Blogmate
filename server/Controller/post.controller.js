@@ -23,6 +23,15 @@ const getPost=async(req,res)=>{
         res.status(500).send({message:error.message,error:true})
     }
 }
+// to retrieve all posts.
+const getAllPosts=async(req,res)=>{
+    try {
+        const posts=await Post.find()
+        res.status(200).send({message:posts,error:false})
+    } catch (error) {
+        res.status(500).send({message:error.message,error:true})
+    }
+}
 // to update a post's content by id.
 const updatePost=async(req,res)=>{
     try {
@@ -66,4 +75,4 @@ const unlikePost=async(req,res)=>{
     }
 }
 
-module.exports={createPost,getPost,updatePost,deletePost,likePost,unlikePost}
+module.exports={createPost,getPost,updatePost,deletePost,likePost,unlikePost,getAllPosts}

@@ -9,6 +9,6 @@ analyticsRouter.get('/users/top-active',getMostActiveUsers)
 // to retrieve the total number of posts.
 analyticsRouter.get('/posts',getTotalNumberOfPost)
 // to retrieve the top 5 most liked posts.
-analyticsRouter.get('/posts/top-active',getMostLikedPosts)
+analyticsRouter.get('/posts/top-liked',getMostLikedPosts)
 
 module.exports=analyticsRouter

@@ -23,6 +23,15 @@ const getUser=async(req,res)=>{
         res.status(500).send({message:error.message,error:true})
     }
 }
+// to retrieve all users.
+const getAllUsers=async(req,res)=>{
+    try {
+        const users=await User.find()
+        res.status(200).send({message:users,error:false})
+    } catch (error) {
+        res.status(500).send({message:error.message,error:true})
+    }
+}
 // to update a user's name or bio by id.
 const updateUser=async(req,res)=>{
     try {
@@ -42,4 +51,4 @@ const deleteUser=async(req,res)=>{
     }
 }
 
-module.exports={createUser,getUser,updateUser,deleteUser}
+module.exports={createUser,getUser,updateUser,deleteUser,getAllUsers}

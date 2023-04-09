@@ -12,8 +12,9 @@ const getTotalNumberOfUser=async(req,res)=>{
 // to retrieve the top 5 most active users, based on the number of posts.
 const getMostActiveUsers=async(req,res)=>{
     try {
-        const most_active_users=await Post.aggregate([{$group:{_id:'$user_id',totalPost:{$sum:1}}},{$sort:{totalPost:-1}},{$limit:5}])
-        res.status(200).send({most_active_users,error:false})
+        const results=await Post.aggregate([{$group:{_id:'$user_id',totalPost:{$sum:1}}},{$sort:{totalPost:-1}},{$limit:5}])
+        await User.populate(results,{path:"_id"})
+        res.status(200).send({results,error:false})
     } catch (error) {
         res.status(500).send({message:error.message,error:true})
     }
@@ -30,8 +31,9 @@ const getTotalNumberOfPost=async(req,res)=>{
 // to retrieve the top 5 most liked posts.
 const getMostLikedPosts=async(req,res)=>{
     try {
-        const most_active_posts=await Post.find({}).sort({likes:-1}).limit(5)
-        res.status(200).send({most_active_posts,error:false})
+        const results=await Post.find({}).sort({likes:-1}).limit(5)
+        await User.populate(results,{path:"user_id"})
+        res.status(200).send({results,error:false})
     } catch (error) {
         res.status(500).send({message:error.message,error:true})
     }
