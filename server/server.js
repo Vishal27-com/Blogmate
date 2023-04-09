@@ -15,3 +15,5 @@ app.use('/users',userRouter)
 app.use('/posts',postRouter)
 app.use('/analytics',analyticsRouter)
 app.listen(8080, () => {console.log('server started on port 8080')})
+
+module.exports=app
